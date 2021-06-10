@@ -410,7 +410,7 @@ $tab: 769px;
     margin-bottom: 36px;
   }
   &__card-wrapper{
-    width: 100%;
+    width: 95%;
     justify-content: space-between;
   }
   &__card{
@@ -449,7 +449,7 @@ $tab: 769px;
     }
   }
   @include tab{
-    // overflow: hidden;
+    overflow: hidden;
     &__card-wrapper{
       justify-content: flex-start;
       overflow-x: scroll;

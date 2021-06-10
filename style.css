@@ -460,7 +460,7 @@ li {
 }
 
 .introducecompanys__card-wrapper {
-  width: 100%;
+  width: 95%;
   justify-content: space-between;
 }
 
@@ -506,6 +506,9 @@ li {
 }
 
 @media (max-width: 769px) {
+  .introducecompanys {
+    overflow: hidden;
+  }
   .introducecompanys__card-wrapper {
     justify-content: flex-start;
     overflow-x: scroll;
