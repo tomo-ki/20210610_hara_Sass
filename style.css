@@ -506,33 +506,29 @@ li {
 }
 
 @media (max-width: 769px) {
-  .introducecompanys {
-    overflow: hidden;
-    text-align: center;
-  }
   .introducecompanys__card-wrapper {
     justify-content: flex-start;
-    overflow-x: auto;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
-  .introducecompanys__card-wrapper:-webkit-scrollbar {
+  .introducecompanys__card-wrapper::-webkit-scrollbar {
     width: 10px;
-    height: 10px;
+    height: 5px;
   }
-  .introducecompanys__card-wrapper:-webkit-scrollbar-thumb {
-    background: black;
-    border-radius: 10px;
+  .introducecompanys__card-wrapper::-webkit-scrollbar-thumb {
+    background: #EEEEEE;
+    border-radius: 5px;
   }
-  .introducecompanys__card-wrapper:-webkit-scrollbar-track {
+  .introducecompanys__card-wrapper::-webkit-scrollbar-track {
     background: transparent;
   }
   .introducecompanys__card {
     scroll-snap-align: center;
     flex-shrink: 0;
     width: 300px;
-    margin: 0 80px;
+    margin: 20px 80px;
     border-radius: 10px;
     transform-origin: center center;
     transform: scale(1);

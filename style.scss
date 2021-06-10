@@ -449,23 +449,22 @@ $tab: 769px;
     }
   }
   @include tab{
-    overflow: hidden;
-    text-align: center;
+    // overflow: hidden;
     &__card-wrapper{
       justify-content: flex-start;
-      overflow-x: auto;
+      overflow-x: scroll;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      &:-webkit-scrollbar{
+      &::-webkit-scrollbar{
         width: 10px;
-        height: 10px;
+        height: 5px;
       }
-      &:-webkit-scrollbar-thumb{
-      background: black;
-      border-radius: 10px;
+      &::-webkit-scrollbar-thumb{
+      background: #EEEEEE;
+      border-radius: 5px;
       }
-      &:-webkit-scrollbar-track{
+      &::-webkit-scrollbar-track{
         background: transparent;
       }
     }
@@ -473,7 +472,7 @@ $tab: 769px;
       scroll-snap-align: center;
       flex-shrink: 0;
       width: 300px;
-      margin: 0 80px;
+      margin: 20px 80px;
       border-radius: 10px;
       transform-origin: center center;
       transform: scale(1);
