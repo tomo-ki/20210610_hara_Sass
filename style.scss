@@ -1,0 +1,669 @@
+body{
+  font-family: Roboto;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+$pink: #e37ab0;
+$blue: #6f99e3;
+$sakura: #FFF7FB;
+
+@mixin buttonStyle($b-color, $f-color: white, $width:110px) {
+  height: 45px;
+  width: $width;
+  color: $f-color;
+  border-radius: 30px;
+  border: none;
+  background-color: $b-color;
+  font-size: 14px;
+}
+
+$tab: 769px;
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+
+
+.header {
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  position: relative;
+  &__logo {
+    height: 34px;
+    position: absolute;
+    left: 15%;
+  }
+  &__nav-link {
+    margin: 24px 10px 27px 10px;
+  }
+  &__button-wrapper {
+    position: absolute;
+    right: 7%;
+  }
+  &__button1 {
+    @include buttonStyle($b-color: $pink);
+    margin-right: 20px;
+  }
+  &__button2 {
+    @include buttonStyle($b-color: $blue);
+  }
+  @include tab{
+    &__logo{
+      left: 20px;
+    }
+    &__nav, &__button-wrapper{
+      display: none;
+    }
+  }
+}
+
+// firstview
+.firstview{
+  padding: 70px 15%;
+  height: 522px;
+  align-items: center;
+  justify-content: space-between;
+  background: url(./images/fv__bg-pc.svg) no-repeat top/100% ;
+  &__wrapper{
+    width: 50%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &__heading{
+    font-size: 46px;
+    margin-bottom: 25px;
+  }
+  &__desc{
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+  &__button{
+    @include buttonStyle($b-color: $pink, $width: 350px)
+  }
+  &__img{
+    width: 60%;
+    margin-left: 30%;
+  }
+  @include tab{
+    flex-wrap: nowrap;
+    height: auto;
+    width: 100%;
+    padding: 39px 19px;
+    &__wrapper{
+      width: 100%;
+      align-items: center;
+    }
+    &__heading{
+      order: 1;
+      font-size: 32px;
+      line-height: 37px;
+    }
+    &__desc{
+      order: 2;
+    }
+    &__button{
+      order: 4;
+      width: 100%;
+    }
+    &__img{
+      order: 3;
+      margin: 25px;
+    }
+  }
+}
+
+// secondview
+.secondview{
+  padding: 70px 0;
+  background-color: $sakura;
+  align-items: center;
+  &__img{
+    margin-left: -3.2%;
+    width: 45%;
+  }
+  &__desc{
+    width: 45%;
+    font-size: 38px;
+    margin-left: 8.2%;
+  }
+  @include tab{
+    flex-direction: column;
+    &__img{
+      order: 2;
+      width: 90%;
+    }
+    &__desc{
+      order: 1;
+      width: 90%;
+      font-size: 16px;
+      margin: 0 0 25px;
+    }
+  }
+}
+
+// troubles
+.troubles{
+  padding: 70px 0;
+  align-items: center;
+  justify-content: center;
+  &__title{
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+  &__contents-wrapper{
+    width: 80%;
+    justify-content: space-between;
+  }
+  &__content{
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    &-img{
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    &-text{
+      font-size: 22px;
+      font-weight: bold;
+      width: 70%;
+    }
+  }
+  @include tab{
+    &__title{
+      font-size: 26px;
+    }
+    &__contents-wrapper{
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    &__content{
+      width: 90%;
+      text-align:start;
+      justify-content: space-between;
+      @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) {
+          @if $i % 2 == 0{
+            flex-direction: row-reverse;
+          } @else {
+            flex-direction: row;
+          }
+        }
+      }
+      &-img{
+        width: 35%;
+      }
+      &-text{
+        width: 55%;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// solutions
+.solutions{
+  background-color: $sakura;
+  align-items: center;
+  padding: 70px 0;
+  &__title{
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+  &__contents-wrapper{
+    width: 80%;
+    justify-content: space-between;
+  }
+  &__content{
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) {
+          @if $i % 2 == 0{
+            flex-direction: row-reverse;
+          } @else {
+            flex-direction: row;
+          }
+        }
+      }
+  }
+  &__content-textarea{
+    width: 45%;
+  }
+  &__content-heading{
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  &__content-num{
+    font-weight: bold;
+    font-size: 40px;
+    color: $pink;
+  }
+  &__content-title{
+    font-weight: bold;
+    font-size: 32px;
+    margin-left: 13px;
+    line-height: 37px;
+  }
+  &__content-desc{
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__content-img{
+    width: 40%;
+  }
+  @include tab{
+    &__title{
+      font-size: 26px;
+    }
+    &__contents-wrapper{
+      width: 100%;
+      align-items: center;
+    }
+    &__content{
+      flex-direction: column!important;
+      width: 90%;
+      &-textarea{
+        width: 100%;
+        margin-bottom: 25px;
+      }
+      &-heading{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      &-num{
+        font-size: 26px;
+        line-height: 30px;
+      }
+      &-title{
+        margin: 0;
+        font-size: 22px;
+        line-height: 26px;
+      }
+      &-img{
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+
+.functions{
+  padding: 70px 0;
+  align-items: center;
+  &__title{
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 45px;
+  }
+  &__list{
+    align-items: center;
+    justify-content: center;
+    width: 10vw;
+    border: solid 1px $pink;
+    border-radius: 15px;
+    box-shadow: 0px 0px 6px $pink;
+    padding: 10px;
+    margin: 40px 10px 0;
+    &-img{
+      margin-bottom: 10px;
+      width: 75%;
+    }
+    &-text{
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  @include tab{
+    &__title{
+      font-size: 26px;
+      line-height: 30px;
+    }
+    &__lists{
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    &__list{
+      width: 42%;
+      margin: 7px;
+    }
+  }
+}
+
+// invitation
+.invitation{
+  background-color: $pink;
+  align-items: center;
+  padding: 70px 0;
+  justify-content: center;
+  text-align: center;
+  &__text{
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+    height: 38px;
+    line-height: 37px;
+    margin-bottom: 40px;
+    width: 90%;
+  }
+  &__buttonarea{
+    justify-content: center;
+  }
+  &__button1{
+    @include buttonStyle($b-color: $blue, $width: 350px);
+  }
+  &__button2{
+    @include buttonStyle($b-color: white, $f-color: $pink, $width: 350px);
+    margin-left: 25px;
+  }
+  @include tab{
+    &__text{
+      font-size: 16px;
+      line-height: 19px;
+    }
+    &__buttonarea{
+      flex-direction: column;
+      width: 90%;
+    }
+    &__button1{
+      width: 100%;
+    }
+    &__button2{
+      margin: 25px 0 0;
+      width: 100%;
+    }
+  }
+}
+
+
+// introducecompanys
+.introducecompanys{
+  align-items: center;
+  padding: 70px 0;
+  &__title{
+    font-weight: bold;
+    font-size: 38px;
+    margin-bottom: 36px;
+  }
+  &__card-wrapper{
+    width: 100%;
+    justify-content: space-between;
+  }
+  &__card{
+    position: relative;
+    box-shadow: 0px 0px 6px #DDDDDD;
+    border-radius: 15px;
+    width: 18%;
+    &-img{
+      height: 173px;
+      width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+    &-tag{
+      position: absolute;
+      border: 1px solid $pink;
+      background-color: white;
+      width: 48px;
+      height: 22px;
+      text-align: center;
+      line-height: 22px;
+      top: 163px;
+      left: 15px;
+    }
+    &-textarea{
+      margin: 30px 16px;
+    }
+    &-name{
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    &-text{
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 23px;
+    }
+  }
+  @include tab{
+    overflow: hidden;
+    text-align: center;
+    &__card-wrapper{
+      justify-content: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      &:-webkit-scrollbar{
+        width: 10px;
+        height: 10px;
+      }
+      &:-webkit-scrollbar-thumb{
+      background: black;
+      border-radius: 10px;
+      }
+      &:-webkit-scrollbar-track{
+        background: transparent;
+      }
+    }
+    &__card{
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      width: 300px;
+      margin: 0 80px;
+      border-radius: 10px;
+      transform-origin: center center;
+      transform: scale(1);
+      transition: transform 0.5s;
+    }
+  }
+}
+
+
+// fee
+@mixin feeTitle($b-color: $blue){
+  width: 100%;
+  background-color: $b-color;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+  color: white;
+  padding: 10px;
+}
+.fee{
+  align-items: center;
+  padding: 70px 0;
+  &__title{
+    font-weight: bold;
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+  &__card-wrapper{
+    align-items: center;
+    height: 100%;
+    width: 75%;
+  }
+  &__card{
+    align-items: center;
+    box-shadow: 0px 0px 6px #DEDEDE;
+    border-radius: 15px;
+    width: 33%;
+    &-bluetitle{
+      @include feeTitle
+    }
+    &-pinktitle{
+      @include feeTitle($b-color: $pink)
+    }
+    &-planname{
+      height: 19px;
+      line-height: 19px;
+      font-size: 16px;
+    }
+    &-planfee{
+      height: 45px;
+      line-height: 45px;
+      font-weight: bold;
+      font-size: 38px;
+      span{
+        font-size: 20px;
+      }
+    }
+    &-textarea{
+      width: 100%;
+      align-items: center;
+      padding: 25px;
+    }
+    &-desc{
+      width: 100%;
+      padding: 5px auto;
+      text-align: center;
+      font-size: 16px;
+      border-bottom: 1px solid #DEDEDE;
+    }
+    &-button{
+      @include buttonStyle($b-color: #E8E8E8, $f-color: black, $width:90%);
+      margin-bottom: 25px;
+    }
+  }
+  @include tab{
+    &__title{
+      font-size: 26px;
+      line-height: 30px;
+    }
+    &__card-wrapper{
+      flex-direction: column;
+      width: 90%;
+    }
+    &__card{
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+// questions
+.questions{
+  align-items: center;
+  padding: 70px 0;
+  &-title{
+    font-weight: bold;
+    font-size: 38px;
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 40px;
+  }
+  &-wrapper{
+    align-items: center;
+  }
+  &__question{
+    align-items: center;
+    width: 70%;
+    &-title{
+      height: 64.97px;
+      width: 100%;
+      align-items: center;
+      border: 1px solid #E37AB0;
+      box-sizing: border-box;
+      border-radius: 15px;
+      color: $pink;
+      font-weight: bold;
+      font-size: 16px;
+      span{
+        font-size: 22px;
+        margin: 0 14px 0 20px;
+      }
+    }
+    &-answer{
+      padding: 22.03px 0;
+      font-size: 16px;
+      line-height: 19px;
+      margin-bottom: 33px;
+      span{
+        font-size: 22px;
+        margin: 0 14px 0 20px;
+        color: $blue;
+      }
+      p{
+        margin-right: 20px;
+      }
+    }
+  }
+  @include tab{
+    &__title{
+      height: 30px;
+      font-size: 26px;
+      line-height: 30px;
+    }
+    &__question{
+      width: 90%;
+    }
+  }
+}
+
+
+// footer
+.footer{
+  align-items: center;
+  background-color: $sakura;
+  &-main{
+    padding: 70px 20% 20px;
+    align-items: flex-start;
+    width: 100%;
+    height: 247px;
+  }
+  &__logo{
+    height: 37px;
+  }
+  &__lists{
+    height: 100%;
+    width: 40%;
+    flex-wrap: wrap;
+    margin-left: 18%;
+  }
+  &__list{
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 19px;
+    height: 19px;
+  }
+  &__copyright{
+    height: 55px;
+    font-size: 14px;
+    line-height: 55px;
+  }
+  @include tab{
+    &-main{
+      padding: 70px 10%;
+      flex-direction: column;
+      height: auto;
+    }
+    &__lists{
+      flex-wrap: nowrap;
+      margin: 20px 0 0;
+      width: 100%;
+    }
+  }
+}
